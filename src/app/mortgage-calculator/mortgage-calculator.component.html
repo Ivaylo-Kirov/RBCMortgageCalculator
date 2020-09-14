@@ -1,0 +1,43 @@
+<div class="container">
+    <h3>Mortgage Calculator</h3>
+    <br/>
+    <form [formGroup]="mortgageForm" (ngSubmit)="onSubmit(mortgageForm.value)">
+        <div class="row">
+            <div class="col">
+            <label for="mortgageAmount">
+                Mortgage Amount ($)
+            </label>
+            <input id="mortgageAmount" class="form-control" type="text" formControlName="mortgageAmount">
+            </div>
+            <br/>
+            <div class="col">
+            <label for="interestRate">
+                Interest Rate (%)
+            </label>
+            <input id="interestRate" class="form-control" type="text" formControlName="interestRate">
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col">
+                <label for="amortizationPeriod">
+                Amortization Period (years)
+                </label>
+                <input id="amortizationPeriod" class="form-control" type="text" formControlName="amortizationPeriod">
+            </div>
+        
+            <div class="col">
+                <label for="paymentFrequency">
+                Payment Frequency (per year)
+                </label>
+                <input id="paymentFrequency" class="form-control" type="text" formControlName="paymentFrequency">
+            </div>
+        </div>
+        <br/>
+        <button class="button" class="btn btn-primary" type="submit">Calculate</button>
+    </form>
+    <br/>
+    <div *ngIf="ready">
+        <h4>Required payments: {{ payments | currency:'CAD':'code' }}</h4>
+    </div>
+</div>
